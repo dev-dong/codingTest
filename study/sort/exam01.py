@@ -1,0 +1,5 @@
+arr = list(map(int, input().split()))
+arr1 = sorted(arr)
+arr2 = sorted(arr, reverse=True)
+print(' '.join(map(str, arr1)))
+print(' '.join(map(str, arr2)))
