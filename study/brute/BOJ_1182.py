@@ -1,20 +1,19 @@
-answer = 0
-# total_sum = sum(list(map(int, input().split())))
-input_list = list(map(int, input().split()))
+N, S = map(int, input().split())
+arr = list(map(int, input().split()))
 result = []
 choose = []
 
-def combination(index, level):
-    if index == level:
-        result.append(choose[:])
+
+def search(lev):
+    if lev == N:
+        if choose and sum(choose) == S:
+            result.append(choose[:])
         return
-    for i in range(index, len(input_list)):
-        choose.append(input_list[i])
-        combination(i + 1, level)
-        choose.pop()
+    choose.append(arr[lev])
+    search(lev + 1)
+    choose.pop()
+    search(lev + 1)
 
-for lvl in range(1, len(input_list) + 1):
-    combination(0, lvl)
 
-print(result)
-
+search(0)
+print(len(result))
